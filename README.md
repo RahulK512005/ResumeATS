@@ -174,47 +174,48 @@ ISC
 
 ---
 
-## Vercel Deployment Guide
+## Vercel Deployment (Full Stack)
 
-### Option 1: Frontend Only (Recommended)
+This project is configured for full-stack Vercel deployment with serverless API functions.
 
-Deploy the frontend to Vercel and host the backend on a separate service (Render, Railway, etc.)
+### Step 1: Configure Environment Variables
 
-#### Step 1: Deploy Backend to Render/Railway
+Go to your Vercel project Settings → Environment Variables and add:
 
-1. Push your code to GitHub
-2. Create a new web service on Render or Railway
-3. Connect your GitHub repository
-4. Set the following environment variables:
-   - `PORT=5000`
-   - `MONGODB_URI` - Your MongoDB Atlas connection string
-   - `JWT_SECRET` - A secure random string
-   - `GEMINI_API_KEY` - Your Google Gemini API key
-5. Deploy and note your backend URL (e.g., `https://your-backend.onrender.com`)
+| Variable | Description |
+|----------|-------------|
+| `MONGODB_URI` | MongoDB Atlas connection string (mongodb+srv://...) |
+| `JWT_SECRET` | A secure random string for JWT tokens |
+| `GEMINI_API_KEY` | Google Gemini API key (optional, for AI analysis) |
 
-#### Step 2: Deploy Frontend to Vercel
+### Step 2: Deploy
 
-1. Go to [Vercel](https://vercel.com) and sign in
-2. Click "Add New..." → "Project"
-3. Import your GitHub repository
-4. Configure:
-   - Framework Preset: Vite
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-5. In Environment Variables, add:
-   - `VITE_API_URL` = Your backend URL (from Step 1)
-6. Click "Deploy"
+1. Push all changes to GitHub
+2. Go to [Vercel](https://vercel.com) → Add Project
+3. Import your repository
+4. Vercel will auto-detect the configuration from `vercel.json`
+5. Click "Deploy"
 
-### Option 2: Full Stack with Vercel Serverless
+### Project Structure for Vercel
 
-For a fully serverless deployment, you would need to restructure the backend as Vercel API routes.
-
----
-
-### Production .env Setup
-
-Before deploying, create a `.env.production` file in the frontend folder:
-
-```env
-VITE_API_URL=https://your-backend-url.vercel.app
 ```
+├── api/
+│   ├── auth.js        # Authentication API routes
+│   └── resume.js      # Resume upload & analysis API
+├── frontend/
+│   ├── src/           # React frontend source
+│   └── dist/          # Built frontend (generated)
+├── vercel.json        # Vercel configuration
+└── package.json       # Root package with build script
+```
+
+### API Endpoints (deployed)
+
+- `POST /api/auth/register` - Register user
+- `POST /api/auth/login` - Login user
+- `GET /api/auth/me` - Get current user
+- `POST /api/resume/upload` - Upload resume
+- `GET /api/resume` - List resumes
+- `GET /api/resume/:id` - Get resume
+- `DELETE /api/resume/:id` - Delete resume
+- `POST /api/resume/analyze/:id` - Analyze resume

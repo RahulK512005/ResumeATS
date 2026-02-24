@@ -1,7 +1,8 @@
 // API Configuration
 // This file centralizes all API calls to the backend
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+// Use relative URL on Vercel (same domain), otherwise use env var or localhost
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 export const API_ENDPOINTS = {
   AUTH: {
