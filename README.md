@@ -171,3 +171,50 @@ ATS-Resume-Analyzer/
 ## License
 
 ISC
+
+---
+
+## Vercel Deployment Guide
+
+### Option 1: Frontend Only (Recommended)
+
+Deploy the frontend to Vercel and host the backend on a separate service (Render, Railway, etc.)
+
+#### Step 1: Deploy Backend to Render/Railway
+
+1. Push your code to GitHub
+2. Create a new web service on Render or Railway
+3. Connect your GitHub repository
+4. Set the following environment variables:
+   - `PORT=5000`
+   - `MONGODB_URI` - Your MongoDB Atlas connection string
+   - `JWT_SECRET` - A secure random string
+   - `GEMINI_API_KEY` - Your Google Gemini API key
+5. Deploy and note your backend URL (e.g., `https://your-backend.onrender.com`)
+
+#### Step 2: Deploy Frontend to Vercel
+
+1. Go to [Vercel](https://vercel.com) and sign in
+2. Click "Add New..." → "Project"
+3. Import your GitHub repository
+4. Configure:
+   - Framework Preset: Vite
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+5. In Environment Variables, add:
+   - `VITE_API_URL` = Your backend URL (from Step 1)
+6. Click "Deploy"
+
+### Option 2: Full Stack with Vercel Serverless
+
+For a fully serverless deployment, you would need to restructure the backend as Vercel API routes.
+
+---
+
+### Production .env Setup
+
+Before deploying, create a `.env.production` file in the frontend folder:
+
+```env
+VITE_API_URL=https://your-backend-url.vercel.app
+```
