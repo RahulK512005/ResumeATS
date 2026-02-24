@@ -1,0 +1,33 @@
+/* App Level Layout */
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  padding-top: 68px;
+}
+
+/* Optional: smooth font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove default link styling globally */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Button reset */
+button {
+  font-family: inherit;
+}
+
+/* Input reset */
+input {
+  font-family: inherit;
+}

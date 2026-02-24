@@ -1,0 +1,589 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+.contact-wrapper {
+  font-family: 'DM Sans', sans-serif;
+  background: #060e24;
+  color: #f0f4ff;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---- BG ORBS ---- */
+.contact-bg-orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.contact-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.25;
+}
+.contact-orb-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #00c896 0%, transparent 70%);
+  top: -100px; right: -100px;
+}
+.contact-orb-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #00A3FF 0%, transparent 70%);
+  bottom: 0; left: -100px;
+}
+
+/* ---- GRADIENT TEXT ---- */
+.gradient-text {
+  background: linear-gradient(135deg, #00c896, #00A3FF, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- CONTAINER ---- */
+.contact-container {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 140px 24px 80px;
+  animation: fadeUp 0.8s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- HEADER ---- */
+.contact-header { text-align: center; margin-bottom: 48px; }
+
+.contact-tag {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #00c896;
+  margin-bottom: 12px;
+}
+
+.contact-title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.contact-sub {
+  font-size: 1rem;
+  color: #8896b3;
+  line-height: 1.65;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ---- CARD ---- */
+.contact-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 48px;
+  backdrop-filter: blur(20px);
+  margin-bottom: 32px;
+}
+
+/* ---- FORM ---- */
+.contact-form { display: flex; flex-direction: column; gap: 24px; }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #8896b3;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: #f0f4ff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  resize: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(136, 150, 179, 0.5);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: rgba(0, 200, 150, 0.5);
+  box-shadow: 0 0 0 3px rgba(0, 200, 150, 0.08);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* ---- SUBMIT BUTTON ---- */
+.contact-btn {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #00c896, #00A3FF);
+  border: none;
+  border-radius: 12px;
+  padding: 15px 36px;
+  cursor: pointer;
+  width: fit-content;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 28px rgba(0, 200, 150, 0.3);
+}
+.contact-btn:hover {
+  transform: scale(1.03) translateY(-2px);
+  box-shadow: 0 8px 36px rgba(0, 200, 150, 0.45);
+}
+
+/* ---- SUCCESS STATE ---- */
+.success-state {
+  text-align: center;
+  padding: 24px 0;
+  animation: fadeUp 0.5s ease both;
+}
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, #00c896, #00A3FF);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #fff;
+  margin: 0 auto 24px;
+  box-shadow: 0 0 40px rgba(0, 200, 150, 0.4);
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes popIn {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.success-state h2 {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #f0f4ff;
+}
+
+.success-state p {
+  color: #8896b3;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.success-state strong { color: #00c896; }
+
+.success-state .contact-btn {
+  margin: 0 auto;
+}
+
+/* ---- INFO STRIP ---- */
+.contact-info-strip {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.info-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(0, 200, 150, 0.1);
+  border: 1px solid rgba(0, 200, 150, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.info-label {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8896b3;
+  margin-bottom: 2px;
+}
+
+.info-value {
+  font-size: 0.88rem;
+  color: #f0f4ff;
+  font-weight: 500;
+}
+
+/* ---- RESPONSIVE ---- */
+
+/* TABLETS (1024px and below) */
+@media (max-width: 1024px) {
+  .contact-container {
+    max-width: 700px;
+    padding: 120px 32px 80px;
+  }
+
+  .contact-card { padding: 40px 32px; }
+}
+
+/* MEDIUM TABLETS (768px and below) */
+@media (max-width: 768px) {
+  .contact-container {
+    max-width: 100%;
+    padding: 100px 24px 60px;
+  }
+
+  .contact-orb {
+    filter: blur(70px);
+  }
+
+  .contact-orb-1 {
+    width: 400px;
+    height: 400px;
+    top: 0;
+    right: -100px;
+  }
+
+  .contact-orb-2 {
+    width: 300px;
+    height: 300px;
+    bottom: 100px;
+    left: -80px;
+  }
+
+  .contact-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: 12px;
+  }
+
+  .contact-sub {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  .contact-card { padding: 36px 28px; }
+
+  .form-row { gap: 16px; }
+
+  .form-group label {
+    font-size: 0.75rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+
+  .contact-btn {
+    padding: 13px 32px;
+    font-size: 0.9rem;
+  }
+
+  .contact-info-strip {
+    gap: 32px;
+  }
+
+  .info-item { gap: 12px; }
+  .info-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .info-label { font-size: 0.68rem; }
+  .info-value { font-size: 0.82rem; }
+
+  .success-state h2 { font-size: 1.4rem; margin-bottom: 10px; }
+  .success-state p { font-size: 0.9rem; margin-bottom: 24px; }
+
+  .success-icon {
+    width: 68px;
+    height: 68px;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+}
+
+/* SMALL TABLETS (640px and below) */
+@media (max-width: 640px) {
+  .contact-container {
+    padding: 80px 16px 45px;
+  }
+
+  .contact-tag { font-size: 0.7rem; margin-bottom: 10px; }
+
+  .contact-title {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    margin-bottom: 10px;
+  }
+
+  .contact-sub {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+
+  .contact-header { margin-bottom: 36px; }
+
+  .contact-card {
+    padding: 28px 20px;
+    margin-bottom: 24px;
+    border-radius: 18px;
+  }
+
+  .contact-form { gap: 18px; }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .form-group {
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-size: 0.7rem;
+    margin-bottom: 2px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 11px 14px;
+    font-size: 0.85rem;
+    border-radius: 10px;
+  }
+
+  .contact-btn {
+    padding: 11px 28px;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+
+  .contact-info-strip {
+    gap: 20px;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+  }
+
+  .info-item {
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+  }
+
+  .info-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+
+  .info-label { font-size: 0.65rem; }
+  .info-value { font-size: 0.78rem; }
+
+  .success-state h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .success-state p {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+
+  .success-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+  }
+
+  .success-state .contact-btn {
+    margin: 0 auto;
+  }
+}
+
+/* MOBILE (480px and below) */
+@media (max-width: 480px) {
+  .contact-wrapper {
+    min-height: 100vh;
+  }
+
+  .contact-container {
+    padding: 70px 12px 40px;
+    max-width: 100%;
+  }
+
+  .contact-bg-orbs {
+    opacity: 0.6;
+  }
+
+  .contact-orb {
+    filter: blur(60px);
+    opacity: 0.2;
+  }
+
+  .contact-orb-1 {
+    width: 300px;
+    height: 300px;
+    top: -80px;
+    right: -80px;
+  }
+
+  .contact-orb-2 {
+    width: 250px;
+    height: 250px;
+    bottom: 80px;
+    left: -80px;
+  }
+
+  .contact-tag {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    margin-bottom: 8px;
+  }
+
+  .contact-title {
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .contact-sub {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .contact-header {
+    margin-bottom: 28px;
+  }
+
+  .contact-card {
+    padding: 22px 16px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    gap: 18px;
+  }
+
+  .contact-form { gap: 16px; }
+
+  .form-group { gap: 5px; }
+
+  .form-group label {
+    font-size: 0.65rem;
+    margin-bottom: 1px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+  }
+
+  .form-group textarea {
+    min-height: 100px;
+  }
+
+  .contact-btn {
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .contact-info-strip {
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .info-item {
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    width: 100%;
+  }
+
+  .info-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
+  .info-label {
+    font-size: 0.6rem;
+    margin-bottom: 1px;
+  }
+
+  .info-value { font-size: 0.75rem; }
+
+  .success-state {
+    padding: 20px 0;
+  }
+
+  .success-state h2 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  .success-state p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  .success-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 1.4rem;
+    margin-bottom: 14px;
+  }
+
+  .success-state .contact-btn {
+    padding: 9px 18px;
+    font-size: 0.75rem;
+  }
+}
