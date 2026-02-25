@@ -13,10 +13,10 @@
   ],
   "functions": {
     "api/auth.js": {
-      "runtime": "nodejs@20"
+      "runtime": "nodejs-20.x"
     },
     "api/resume.js": {
-      "runtime": "nodejs@20"
+      "runtime": "nodejs-20.x"
     }
   }
 }
